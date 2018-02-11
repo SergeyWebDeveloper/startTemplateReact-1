@@ -1,21 +1,16 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Field, reduxForm} from 'redux-form';
+import FormSignIn from '../components/FormSignIn';
 
 class SignIn extends Component {
+	submit = values => {
+		console.log(values)
+	};
 	render() {
 		return (
 			<div className='signin'>
 				<h3>Войти в систему</h3>
-				<div className="row">
-					<label htmlFor="firstName">Логин</label>
-					<Field name="login" component="input" type="text" />
-				</div>
-				<div className="row">
-					<label htmlFor="firstName">Пароль</label>
-					<Field name="password" component="input" type="password" />
-				</div>
-				<button className="waves-effect waves-light btn">Войти</button>
+				<FormSignIn onSubmit={this.submit} />
 			</div>
 		);
 	}
@@ -23,8 +18,5 @@ class SignIn extends Component {
 
 SignIn.propTypes = {};
 
-SignIn = reduxForm({
-	form: 'signin'
-})(SignIn);
 
 export default SignIn;
