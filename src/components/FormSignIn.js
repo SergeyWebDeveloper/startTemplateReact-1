@@ -10,10 +10,14 @@ let FormSignIn = props => {
 				<Field name="login" component="input" type="text" />
 			</div>
 			<div className="row">
-				<label htmlFor="firstName">Пароль</label>
+				<label htmlFor="Password">Пароль</label>
 				<Field name="password" component="input" type="password" />
 			</div>
-			<button className="waves-effect waves-light btn">Войти</button>
+			<div className="row">
+				<button className="waves-effect waves-light btn">Войти</button>
+			</div>
+			<div className="row">
+			</div>
 		</form>
 	)
 };

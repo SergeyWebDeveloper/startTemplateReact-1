@@ -23,11 +23,12 @@ export const store = createStore(
 	composeWithDevTools(applyMiddleware(thunk,middleware))
 );
 
+
 render(
 	<Provider store={store}>
 		<ConnectedRouter history={history}>
 			<Router>
-                <App/>
+				<App/>
 			</Router>
 		</ConnectedRouter>
 	</Provider>,

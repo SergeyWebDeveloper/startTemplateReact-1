@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FormSignIn from '../components/FormSignIn';
+import {signInUser} from '../reducers/user';
+import {connect} from 'react-redux';
 
 class SignIn extends Component {
 	submit = values => {
-		console.log(values)
+		this.props.signInUser(values);
 	};
 	render() {
+		const {error} = this.props.user;
 		return (
 			<div className='signin'>
 				<h3>Войти в систему</h3>
-				<FormSignIn onSubmit={this.submit} />
+				{error.status && error.message}
+				<FormSignIn error={error} onSubmit={this.submit} />
 			</div>
 		);
 	}
@@ -18,5 +22,10 @@ class SignIn extends Component {
 
 SignIn.propTypes = {};
 
+const mapStateToProps = (state) => {
+	return {
+		user: state.user
+	}
+};
 
-export default SignIn;
+export default connect(mapStateToProps,{signInUser})(SignIn);
