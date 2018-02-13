@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {loadArticles} from "../../reducers/article";
 import {store} from '../../index'
 import ArticleList from "../../containers/ArticleList";
+import {ARTICLE_REQUESTING} from "../../reducers/article";
 
 class HomePage extends Component {
 

@@ -4,8 +4,6 @@ import HomePage from "../components/pages/HomePage";
 import {Route, Switch} from "react-router-dom";
 
 import Authpage from '../components/Authpage';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
 
 class App extends Component {
 	render(){
