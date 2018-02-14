@@ -1,7 +1,6 @@
-import mockUser from '../mock/users';
-
-export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
+export const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
+export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
 
 
 const initialState={
@@ -25,22 +24,9 @@ export default (state=initialState,{type,payload}) => {
 }
 
 
-export const signInUser = (userInfo) => dispatch => {
-	const result = mockUser.filter((user)=>{
-		if ((user.login === userInfo.login) && (user.password === userInfo.password)){
-			return true;
-		}
-	});
-
-	if(result.length){
-		dispatch({
-			type: USER_LOGIN_SUCCESS,
-			payload: userInfo
-		});
-	} else {
-		dispatch({
-			type: USER_LOGIN_ERROR,
-			payload: {error: {status: true},message: 'Не найдено записей в БД'}
-		});
+export const signInUser = (userInfo) => {
+	return{
+		type: USER_LOGIN_REQUEST,
+		payload: userInfo
 	}
 };
