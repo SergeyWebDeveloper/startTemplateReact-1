@@ -14,7 +14,7 @@ import './registerServiceWorker';
 
 import App from './containers/App';
 import reducer from './reducers';
-import {finishSaga} from './saga/articles';
+import {rootSaga} from './saga/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 const history = createHistory();
@@ -25,7 +25,7 @@ export const store = createStore(
 	composeWithDevTools(applyMiddleware(sagaMiddleware,middleware))
 );
 
-sagaMiddleware.run(finishSaga);
+sagaMiddleware.run(rootSaga);
 
 
 render(

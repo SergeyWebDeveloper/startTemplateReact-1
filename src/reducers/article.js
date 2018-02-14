@@ -28,7 +28,7 @@ export default (state = initialState, {type, payload}) => {
             return Object.assign({}, state, {load: false, articles: payload.data});
 
         case ARTICLE_FAILED:
-            return Object.assign({}, state, {load: false, error: true})
+            return Object.assign({}, state, {load: false, error: true});
     }
     return state;
 }
