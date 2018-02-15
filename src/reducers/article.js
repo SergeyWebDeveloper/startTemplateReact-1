@@ -1,15 +1,18 @@
 import articlesMock from '../mock/articles';
-
+import request from 'superagent';
 export const ARTICLE_REQUESTING = 'ARTICLE_REQUESTING';
 export const ARTICLE_SUCCESS = 'ARTICLE_SUCCESS';
 export const ARTICLE_FAILED = 'ARTICLE_FAILED';
 
-export function getArticles() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve([...articlesMock])
-        }, 5000);
-    })
+export async function getArticles() {
+    // return new Promise(resolve => {
+    //     setTimeout(() => {
+    //         resolve([...articlesMock])
+    //     }, 1500);
+    // })
+    const art = await request.get('api/articles');
+    console.log(art);
+    return [];
 }
 
 const initialState = {
