@@ -13,9 +13,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/articles', (req, res) => {
-	Article.find().then(art=>res.json(art));
+	Article.find().limit(5).then(art=>res.json(art));
 });
 
-app.listen(3001, ()=>{console.log('Server connect...')});
-
-
+app.listen(3002, ()=>{console.log('Server connect...')});
