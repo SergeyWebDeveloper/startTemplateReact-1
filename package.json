@@ -2,11 +2,14 @@
   "name": "blogreact",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
+    "immutable": "^3.8.2",
     "materialize-css": "^0.100.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "superagent": "^3.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,6 +25,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.2.3",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0"
   }
