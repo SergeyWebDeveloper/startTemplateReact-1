@@ -2,8 +2,9 @@
   "name": "blogreact",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3002",
+  "proxy": "http://localhost:3001",
   "dependencies": {
+    "immutable": "^3.8.2",
     "materialize-css": "^0.100.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

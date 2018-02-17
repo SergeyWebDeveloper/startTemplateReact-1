@@ -12,6 +12,7 @@ class ArticleList extends Component {
                 title={article.title}
                 author={article.author}
                 url={article._id}
+                comments={article.comments}
             />
         );
         return (
