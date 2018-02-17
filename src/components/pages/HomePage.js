@@ -5,7 +5,7 @@ import ArticleList from "../../containers/ArticleList";
 
 class HomePage extends Component {
 
-    componentDidMount() {
+    componentWillMount() {
         store.dispatch(loadArticles())
     }
 
