@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import FormSignIn from '../components/FormSignIn';
 import {signInUser} from '../reducers/user';
 import {connect} from 'react-redux';
+import {Redirect} from "react-router-dom";
 
 class SignIn extends Component {
 	submit = values => {
@@ -15,6 +15,7 @@ class SignIn extends Component {
 				<h3>Войти в систему</h3>
 				{error.status && error.message}
 				<FormSignIn error={error} onSubmit={this.submit} />
+                {this.props.user && <Redirect to={'/'}/>}
 			</div>
 		);
 	}

@@ -5,8 +5,8 @@ mongoose.connect('mongodb://localhost/articles');
 const Schema = mongoose.Schema;
 
 const articleSchema = new Schema({
-	title: {type: String, required: true},
-	author: {type: String, required: true},
+    login: {type: String, required: true},
+    password: {type: String, required: true},
 	body: {type: String, required: true},
 	date: {type: Date, default: Date.now},
 	comments: [{
