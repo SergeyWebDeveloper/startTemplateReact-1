@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import url from 'url';
 
 const app = express();
+mongoose.set('debug', true);
 mongoose.connect('mongodb://localhost/articles');
 
 app.use((req, res, next) => {

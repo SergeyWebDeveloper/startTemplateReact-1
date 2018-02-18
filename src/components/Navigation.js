@@ -8,7 +8,7 @@ class Navigation extends Component {
 	userSignIn(){
 		return (
 			<Fragment>
-				<li><Link to={'/profile'}>Мой профиль</Link></li>
+				<li><Link to={'/admin'}>Мой профиль</Link></li>
 				<li><button className="btn waves-effect waves-light" type="submit" name="action">Выйти</button></li>
 			</Fragment>
 		)
