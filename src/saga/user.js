@@ -13,8 +13,7 @@ export function* userWorker(action) {
 	const {login, password} = action.payload;
 
 	const result = yield call(getUser, login, password);
-	console.log('1111', result.user._id);
-	if (result.user)
+	if (result.user) {
 		yield put({
 			type: USER_LOGIN_SUCCESS,
 			payload: {
@@ -23,10 +22,11 @@ export function* userWorker(action) {
 				id: result.user._id
 			}
 		});
+	}
 	else {
 		yield put({
 			type: USER_LOGIN_ERROR,
-			payload: {error: {status: true}, message: 'Не найдено записей в БД'}
+			payload: {error: {status: true}, message: 'Данный пользователь не найден'}
 		});
 	}
 }
