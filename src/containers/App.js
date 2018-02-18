@@ -3,14 +3,15 @@ import Navigation from "../components/Navigation";
 import HomePage from "../components/pages/HomePage";
 import {Route, Switch} from "react-router-dom";
 
-import Authpage from '../components/Authpage';
+import Authpage from '../components/Authpage'
+
 
 class App extends Component {
 	render(){
 		return(
             <div>
                 <header>
-                    <Navigation/>
+                    <Navigation />
                 </header>
 
                 <main className={'container'}>
