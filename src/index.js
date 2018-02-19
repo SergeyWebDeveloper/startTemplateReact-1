@@ -9,6 +9,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
+import {loadState,saveState} from './localStorageState';
 
 import './registerServiceWorker';
 
@@ -20,10 +21,21 @@ const sagaMiddleware = createSagaMiddleware();
 const history = createHistory();
 const middleware = routerMiddleware(history);
 
+// const persistedState = loadState();
 export const store = createStore(
 	reducer,
 	composeWithDevTools(applyMiddleware(sagaMiddleware,middleware))
 );
+
+// store.subscribe(()=>{
+// 	const user=store.getState().user;
+// 	if(user.loginStatus){
+// 		saveState({
+// 			login: user.login,
+// 			password: user.password
+// 		});
+// 	}
+// });
 
 sagaMiddleware.run(rootSaga);
 

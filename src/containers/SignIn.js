@@ -6,6 +6,7 @@ import {Redirect} from "react-router-dom";
 
 class SignIn extends Component {
 	submit = values => {
+		console.log(values);
 		this.props.signInUser(values);
 	};
 	render() {
