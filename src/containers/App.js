@@ -1,25 +1,27 @@
 import React, {Component} from 'react';
 import Navigation from "../components/Navigation";
 import HomePage from "../components/pages/HomePage";
+import RouteAdmin from "../components/RouteAdmin";
 import {Route, Switch} from "react-router-dom";
 
-import Authpage from '../components/Authpage';
+import Authpage from '../components/Authpage'
+
 
 class App extends Component {
-	render(){
-		return(
-            <div>
-                <header>
-                    <Navigation/>
-                </header>
-
-                <main className={'container'}>
-                    <Switch>
-                        <Route exact path={'/'} component={HomePage}/>
-												<Route path={'/auth'} component={Authpage} />
-                    </Switch>
-                </main>
-            </div>
+	render() {
+		return (
+			<div>
+				<header>
+					<Navigation/>
+				</header>
+				<main className={'container'}>
+					<Switch>
+						<Route exact path={'/'} component={HomePage}/>
+						<Route path={'/auth'} component={Authpage}/>
+						<Route component={RouteAdmin}/>
+					</Switch>
+				</main>
+			</div>
 		)
 	}
 }

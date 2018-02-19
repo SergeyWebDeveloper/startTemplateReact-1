@@ -6,6 +6,7 @@ import {Redirect} from "react-router-dom";
 
 class SignIn extends Component {
 	submit = values => {
+		console.log(values);
 		this.props.signInUser(values);
 	};
 	render() {
@@ -13,9 +14,9 @@ class SignIn extends Component {
 		return (
 			<div className='signin'>
 				<h3>Войти в систему</h3>
-				{error.status && error.message}
 				<FormSignIn error={error} onSubmit={this.submit} />
-                {this.props.user && <Redirect to={'/'}/>}
+				{this.props.user.loginStatus && <Redirect to={'/'}/>}
+				{error.status && error.message}
 			</div>
 		);
 	}
