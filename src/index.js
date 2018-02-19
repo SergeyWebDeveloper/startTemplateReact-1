@@ -21,21 +21,21 @@ const sagaMiddleware = createSagaMiddleware();
 const history = createHistory();
 const middleware = routerMiddleware(history);
 
-const persistedState = loadState();
+// const persistedState = loadState();
 export const store = createStore(
 	reducer,
-	persistedState,
 	composeWithDevTools(applyMiddleware(sagaMiddleware,middleware))
 );
 
-store.subscribe(()=>{
-	const user=store.getState().user;
-	if(user.loginStatus){
-		saveState({
-			userId: user.id
-		});
-	}
-});
+// store.subscribe(()=>{
+// 	const user=store.getState().user;
+// 	if(user.loginStatus){
+// 		saveState({
+// 			login: user.login,
+// 			password: user.password
+// 		});
+// 	}
+// });
 
 sagaMiddleware.run(rootSaga);
 

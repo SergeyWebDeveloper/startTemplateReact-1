@@ -13,16 +13,19 @@ export function* userWorker(action) {
 	const {login, password} = action.payload;
 
 	const result = yield call(getUser, login, password);
-	console.log('1111', result.user._id);
-	if (result.user)
+	if (result.user) {
+		const {login,password} = result.user;
+		const serializedState = JSON.stringify({login,password});
 		yield put({
 			type: USER_LOGIN_SUCCESS,
 			payload: {
-				login: result.user.login,
-				password: result.user.password,
+				login,
+				password,
 				id: result.user._id
 			}
 		});
+		localStorage.setItem('user',serializedState);
+	}
 	else {
 		yield put({
 			type: USER_LOGIN_ERROR,
