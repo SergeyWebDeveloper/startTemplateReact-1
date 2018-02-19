@@ -5,21 +5,22 @@ import {Link} from 'react-router-dom';
 import Admin from './pages/Admin';
 
 class RouteAdmin extends Component{
-	messageAuth(){
-		return(
-			<div>
-				<p>Защищенная страница! Пожалуйста, зайдите под своими учетными данными</p>
-				<p><Link to={'/auth/signin'}>Войти</Link></p>
-			</div>
-		)
-	}
+	// messageAuth(){
+	// 	return(
+	// 		<div>
+	// 			<p>Защищенная страница! Пожалуйста, зайдите под своими учетными данными</p>
+	// 			<p><Link to={'/auth/signin'}>Войти</Link></p>
+	// 		</div>
+	// 	)
+	// }
 	render(){
 		return(
 			<div>
 				{this.props.user.loginStatus?
 					<Route exact path={'/admin'} component={Admin} />
 					:
-					this.messageAuth()
+					<Redirect to={'/auth/signin'} />
+					// this.messageAuth()
 				}
 			</div>
 		)
