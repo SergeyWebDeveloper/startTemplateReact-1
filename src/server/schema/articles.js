@@ -5,8 +5,8 @@ mongoose.connect('mongodb://localhost/articles');
 const Schema = mongoose.Schema;
 
 const articleSchema = new Schema({
-    login: {type: String, required: true},
-    password: {type: String, required: true},
+	login: {type: String, required: true},
+	password: {type: String, required: true},
 	body: {type: String, required: true},
 	date: {type: Date, default: Date.now},
 	comments: [{
@@ -16,7 +16,7 @@ const articleSchema = new Schema({
 	}]
 });
 
-export const Article = mongoose.model('Article',articleSchema);
+export const Article = mongoose.model('Article', articleSchema);
 
 // for(let i=1;i<=10;i++){
 // 	new Article({

@@ -8,6 +8,7 @@ const initialState={
 	password: null,
 	loginStatus: false,
 	id: null,
+	info: {},
 	error: {
 		status: false,
 		message: ''
@@ -24,6 +25,7 @@ export default (state=initialState,{type,payload}) => {
 					id: payload.id,
 					login: payload.login,
 					password: payload.password,
+					info: payload.info,
 					loginStatus: true,
 					error: {
 						status: false,
