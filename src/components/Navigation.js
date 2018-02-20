@@ -3,6 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 import {Link,Redirect} from "react-router-dom";
 import {connect} from 'react-redux';
 
+import {exitAccount} from '../reducers/user';
 
 class Navigation extends Component {
 	constructor(){
@@ -14,8 +15,9 @@ class Navigation extends Component {
 		this.infoUser=this.infoUser.bind(this);
 	}
 	exitAccount(){
-		localStorage.clear();
-		this.setState({exit: true});
+		// localStorage.clear();
+		// this.setState({exit: true});
+		this.props.exitAccount();
 	}
 	userSignIn(){
 		return (
@@ -66,4 +68,4 @@ const mapStateToProps = (state) => {
 	}
 };
 
-export default connect(mapStateToProps,null)(Navigation);
+export default connect(mapStateToProps,{exitAccount})(Navigation);
