@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 class Admin extends Component {
 	infoAdmin(){
@@ -23,11 +22,6 @@ class Admin extends Component {
 		);
 	}
 }
-
 Admin.propTypes = {};
 
-export default connect((state)=>{
-	return {
-		user: state.user
-	}
-},null)(Admin);
+export default Admin;
