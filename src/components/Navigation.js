@@ -44,7 +44,6 @@ class Navigation extends Component {
 				<div className="nav-wrapper indigo">
 					<ul id="nav-mobile" className="left hide-on-med-and-down">
 						<li><Link to={'/'}>Домашняя страница</Link></li>
-						{!user.loginStatus && <Redirect to={'/'}/>}
 						{user.loginStatus? this.userSignIn() : this.userSignOut()}
 					</ul>
 					{user.loginStatus && this.infoUser()}
