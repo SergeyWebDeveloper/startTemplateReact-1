@@ -17,9 +17,15 @@ class RouteAdmin extends Component{
 		return(
 			<div>
 				{this.props.user.loginStatus?
-					<Route exact path={'/admin'} component={Admin} />
+					<Route path={'/admin'} component={Admin} />
 					:
-					this.messageAuth()
+					// this.messageAuth()
+					<Redirect
+						to={{
+							pathname: "/auth/signin",
+							state: { from: this.props.location }
+						}}
+					/>
 				}
 			</div>
 		)
