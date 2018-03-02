@@ -1,5 +1,9 @@
 import {call, put} from 'redux-saga/effects';
-import {USER_LOGIN_ERROR, USER_LOGIN_SUCCESS} from "../reducers/user";
+import {
+	USER_LOGIN_ERROR,
+	USER_LOGIN_SUCCESS,
+	USER_LOGIN_EXIT
+} from "../reducers/user";
 
 function getUser(login, password) {
 	return fetch('/api/user' + '?login=' + login + '&password=' + password)
@@ -32,4 +36,11 @@ export function* userWorker(action) {
 			payload: {error: {status: true}, message: 'Данный пользователь не найден'}
 		});
 	}
+}
+
+export function* exitUserAccount() {
+	localStorage.clear();
+	yield put({
+		type: USER_LOGIN_EXIT
+	});
 }
