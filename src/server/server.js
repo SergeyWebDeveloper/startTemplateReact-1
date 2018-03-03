@@ -15,10 +15,28 @@ app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
 	next()
 });
+
+app.post('/add-post/', (req, res) => {
+	// console.log(req.body)
+
+    User.update({_id: '5a9a8f78db450b0b3c121f6b'}, {$push: {articles: ['qwe']}});
+
+    res.send('success');
+});
+
 app.use(bodyParser.json());
 
 app.get('/api/articles', (req, res) => {
 	Article.find().limit(5).then(art => res.json(art));
+});
+
+app.get('/api/article-post', function (req, res) {
+    const querys = url.parse(req.url, true).query;
+    console.log(querys.id)
+    Article.findOne({_id: querys.id}, function (err, a) {
+        if (err) res.send({error: true});
+        res.send({article: a});
+    });
 });
 
 app.post('/api/user', (req, res) => {

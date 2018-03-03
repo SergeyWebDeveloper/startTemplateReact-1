@@ -7,11 +7,11 @@ import ArticleList from "../../containers/ArticleList";
 class HomePage extends Component {
 
 	componentDidMount() {
-		const userData = JSON.parse(localStorage.getItem('user'));
+		// const userData = JSON.parse(localStorage.getItem('user'));
 		store.dispatch(loadArticles());
-		if (userData && userData.login && userData.password) {
-			store.dispatch(signInUser({login: userData.login, password: userData.password}));
-		}
+		// if (userData && userData.login && userData.password) {
+		// 	store.dispatch(signInUser({login: userData.login, password: userData.password}));
+		// }
 	}
 
 	render() {

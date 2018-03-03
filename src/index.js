@@ -18,7 +18,7 @@ import reducer from './reducers';
 import {rootSaga} from './saga/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
-const history = createHistory();
+export const history = createHistory();
 const middleware = routerMiddleware(history);
 
 // const persistedState = loadState();
