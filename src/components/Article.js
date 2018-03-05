@@ -16,7 +16,7 @@ class Article extends Component {
 						<p>{comments.length ? `${comments.length} комментариев` : 'Комментариев нет'}</p>
 					</div>
 					<div className="card-action">
-                        <Link to={`/article-post/${url}`}>Open</Link>
+						<Link to={`/article-post/${url}`}>Open</Link>
 					</div>
 				</div>
 			</div>

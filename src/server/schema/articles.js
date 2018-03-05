@@ -6,7 +6,9 @@ const Schema = mongoose.Schema;
 
 const articleSchema = new Schema({
 	body: {type: String},
+	title: {type: String},
 	date: {type: Date, default: Date.now},
+	author: {type: String},
 	comments: [{
 		body: {type: String},
 		date: {type: Date},

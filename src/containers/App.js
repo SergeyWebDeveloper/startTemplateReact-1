@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Navigation from "../components/Navigation";
 import HomePage from "../components/pages/HomePage";
-// import RouteAdmin from "../components/RouteAdmin";
 import Authpage from '../components/Authpage';
 import Admin from '../components/pages/Admin';
 import NotFound from '../components/pages/NotFound';

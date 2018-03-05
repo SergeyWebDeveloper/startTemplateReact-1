@@ -2,8 +2,11 @@ import {call, put} from 'redux-saga/effects';
 import {
 	USER_LOGIN_ERROR,
 	USER_LOGIN_SUCCESS,
-	USER_LOGIN_EXIT
+	USER_LOGIN_EXIT,
+	LOAD_ARTICLES_ADMIN_SUCCESS,
+	getPostsAdmin
 } from "../reducers/user";
+
 
 function getUser(login, password) {
 	return fetch('/api/user' + '?login=' + login + '&password=' + password)
@@ -43,4 +46,14 @@ export function* exitUserAccount() {
 	yield put({
 		type: USER_LOGIN_EXIT
 	});
+}
+
+
+export function* fetchLoadAdminPosts({id}) {
+	try{
+		const data = yield call(getPostsAdmin,id);
+		yield put({type: LOAD_ARTICLES_ADMIN_SUCCESS,payload: data})
+	} catch (e) {
+		console.error(e);
+	}
 }
