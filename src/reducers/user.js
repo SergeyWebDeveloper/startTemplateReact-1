@@ -50,7 +50,7 @@ export default (state = initialState, {type, payload}) => {
 			return Object.assign({}, state, {error: {status: true, message: payload.message}});
 		case LOAD_ARTICLES_ADMIN_SUCCESS:
 			console.log(payload);
-			// return Object.assign({},state,{adminPosts: payload});
+			return Object.assign({},state,{adminPosts: payload});
 		default:
 			return state;
 	}
