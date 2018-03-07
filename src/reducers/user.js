@@ -1,14 +1,23 @@
+import request from "superagent";
+
 export const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
 export const USER_LOGIN_REQUEST_EXIT = 'USER_LOGIN_REQUEST_EXIT';
 export const USER_LOGIN_EXIT = 'USER_LOGIN_EXIT';
+export const LOAD_ARTICLES_ADMIN_REQUEST = 'LOAD_ARTICLES_ADMIN_REQUEST';
+export const LOAD_ARTICLES_ADMIN_SUCCESS = 'LOAD_ARTICLES_ADMIN_SUCCESS';
 
+export async function getPostsAdmin(id) {
+	const {body} = await request('/api/postadmin?id=' + id);
+	return body;
+}
 
 const initialState = {
 	login: null,
 	password: null,
 	loginStatus: false,
+	adminPosts: [],
 	id: null,
 	info: {},
 	error: {
@@ -39,6 +48,9 @@ export default (state = initialState, {type, payload}) => {
 			return Object.assign({},state, initialState);
 		case USER_LOGIN_ERROR:
 			return Object.assign({}, state, {error: {status: true, message: payload.message}});
+		case LOAD_ARTICLES_ADMIN_SUCCESS:
+			console.log(payload);
+			return Object.assign({},state,{adminPosts: payload});
 		default:
 			return state;
 	}
@@ -55,5 +67,13 @@ export const signInUser = (userInfo) => {
 export const exitAccount = () => {
 	return {
 		type: USER_LOGIN_REQUEST_EXIT
+	}
+};
+
+
+export const loadArticlesAdmin = (id) => {
+	return{
+		type: LOAD_ARTICLES_ADMIN_REQUEST,
+		id
 	}
 };

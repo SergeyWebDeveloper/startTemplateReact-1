@@ -1,4 +1,5 @@
 import request from 'superagent';
+
 export const ARTICLE_REQUESTING = 'ARTICLE_REQUESTING';
 export const ARTICLE_SUCCESS = 'ARTICLE_SUCCESS';
 export const ARTICLE_FAILED = 'ARTICLE_FAILED';
