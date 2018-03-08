@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import FormNewPost from "../FormNewPost";
-import {store} from '../../index';
+// import {store} from '../../index';
 import {loadArticlesAdmin} from '../../reducers/user';
+import {connect} from "react-redux";
 
 class AdminPosts extends Component {
 	state = {
@@ -45,11 +46,11 @@ class AdminPosts extends Component {
 			});
 	};
 
-	componentWillMount() {
-		if(this.props.id){
-			store.dispatch(loadArticlesAdmin(this.props.id));
-		}
-	}
+    componentWillMount() {
+        if (!this.props.user.adminPosts.load) {
+            this.props.dispatch(loadArticlesAdmin(this.props.id));
+        }
+    }
 
 	renderWritePost() {
 		const {articles} = this.state;
@@ -77,6 +78,7 @@ class AdminPosts extends Component {
 	}
 
 	render() {
+		console.log(this.props)
 		return (
 			<div className='admin__posts'>
 				<ul className="collapsible" data-collapsible="accordion">
@@ -99,4 +101,4 @@ class AdminPosts extends Component {
 	}
 }
 
-export default AdminPosts;
+export default connect(state => ({user: state.user}))(AdminPosts);
