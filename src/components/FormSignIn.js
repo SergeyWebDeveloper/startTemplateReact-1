@@ -7,16 +7,14 @@ let FormSignIn = props => {
 		<form onSubmit={handleSubmit}>
 			<div className="row">
 				<label htmlFor="firstName">Логин</label>
-				<Field name="login" component="input" type="text" />
+				<Field required name="login" component="input" type="text" />
 			</div>
 			<div className="row">
 				<label htmlFor="Password">Пароль</label>
-				<Field name="password" component="input" type="password" />
+				<Field required name="password" component="input" type="password" />
 			</div>
 			<div className="row">
 				<button className="waves-effect waves-light btn">Войти</button>
-			</div>
-			<div className="row">
 			</div>
 		</form>
 	)

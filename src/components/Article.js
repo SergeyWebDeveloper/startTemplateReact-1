@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 
 class Article extends Component {
+
 	render() {
 		const {title,author,url,comments} = this.props;
 		return (
@@ -14,7 +16,7 @@ class Article extends Component {
 						<p>{comments.length ? `${comments.length} комментариев` : 'Комментариев нет'}</p>
 					</div>
 					<div className="card-action">
-						<a href={url}>Open</a>
+						<Link to={`/article-post/${url}`}>Open</Link>
 					</div>
 				</div>
 			</div>

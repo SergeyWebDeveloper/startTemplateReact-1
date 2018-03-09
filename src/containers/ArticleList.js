@@ -18,7 +18,7 @@ class ArticleList extends Component {
         return (
             <div className={'row'}>
                 {
-                    load && <Preload/>
+                    load && !articles.length && <Preload/>
                 }
                 {
                     articles.length > 0 && renderArticles

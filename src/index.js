@@ -9,6 +9,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
+import {loadState,saveState} from './localStorageState';
 
 import './registerServiceWorker';
 
@@ -17,7 +18,7 @@ import reducer from './reducers';
 import {rootSaga} from './saga/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
-const history = createHistory();
+export const history = createHistory();
 const middleware = routerMiddleware(history);
 
 export const store = createStore(
