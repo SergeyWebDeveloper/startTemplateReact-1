@@ -16,14 +16,6 @@ app.use((req, res, next) => {
 	next()
 });
 
-// app.post('/add-post/', (req, res) => {
-// 	// console.log(req.body)
-//
-//     User.update({_id: '5a9a8f78db450b0b3c121f6b'}, {$push: {articles: ['qwe']}});
-//
-//     res.send('success');
-// });
-
 app.use(bodyParser.json());
 
 app.get('/api/articles', (req, res) => {
@@ -121,6 +113,6 @@ app.get('/api/user', (req, res) => {
 });
 
 
-app.listen(3001, () => {
+app.listen(3005, () => {
 	console.log('Server connect...')
 });

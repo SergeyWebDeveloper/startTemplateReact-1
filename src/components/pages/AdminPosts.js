@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import FormNewPost from "../FormNewPost";
-// import {store} from '../../index';
 import {loadArticlesAdmin} from '../../reducers/user';
 import {connect} from "react-redux";
 
 class AdminPosts extends Component {
 	state = {
 		openForm: false,
-		error: false,
-		articles: []
+		error: false
 	};
 	handleOpenForm = () => {
 		this.setState({openForm: !this.state.openForm})
@@ -41,33 +39,40 @@ class AdminPosts extends Component {
 				if (req.error) {
 					this.setState({error: true})
 				} else if (req.success) {
+					this.props.dispatch(loadArticlesAdmin(this.props.id));
 					this.setState({openForm: false});
 				}
 			});
 	};
 
-    componentWillMount() {
-        if (!this.props.user.adminPosts.load) {
-            this.props.dispatch(loadArticlesAdmin(this.props.id));
-        }
-    }
+	componentDidMount() {
+		if (!this.props.user.adminPosts.load) {
+			this.props.dispatch(loadArticlesAdmin(this.props.id));
+		}
+	}
+
+	deletePost=(id)=>{
+		fetch('/api/delete-post?id='+id)
+			.then(res=>res.json())
+			.then(data=>this.props.dispatch(loadArticlesAdmin(this.props.id)));
+	}
 
 	renderWritePost() {
-		const {articles} = this.state;
 		return (
-			<div className='row'>
-				{articles.map(art => {
-					return (
-						<div className="col s12 m7">
-							<div className="card">
-								<div className="card-image">
-									<span className="card-title">{art.title}</span>
-								</div>
-								<div className="card-content">
-									<p>{art.body}</p>
+			<div className="row">
+				{this.props.user.adminPosts.posts.map(post=>{
+					return(
+						<div key={post._id} className="col s12 m6">
+							<div className="card blue-grey darken-1">
+								<div className="card-content white-text">
+									<span className="card-title">{post.title}</span>
+									<p>{post.body}</p>
+									<p>Дата написания - {post.date}</p>
 								</div>
 								<div className="card-action">
-									<a href="#">This is a link</a>
+									<p>
+										<button className='waves-effect waves-light btn' onClick={this.deletePost.bind(null,post._id)}>Удалить пост</button>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -78,7 +83,6 @@ class AdminPosts extends Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div className='admin__posts'>
 				<ul className="collapsible" data-collapsible="accordion">
@@ -95,7 +99,7 @@ class AdminPosts extends Component {
 						</div>
 					</li>
 				</ul>
-				{/*{this.state.articles.length ? this.renderWritePost() : 'Написанных постов пока нет'}*/}
+				{this.props.adminPosts.posts.length ? this.renderWritePost() : 'Написанных постов нет'}
 			</div>
 		)
 	}

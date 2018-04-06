@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 class InfoAdmin extends Component {
 	infoAdmin(){
+		console.log('info',this.props);
 		const {name,gender,family,articles} = this.props.info;
 		const {login} = this.props;
 		return(
@@ -10,7 +11,7 @@ class InfoAdmin extends Component {
 				{name && <li className="collection-item">Ваше имя - {name}</li> }
 				{family && <li className="collection-item">Ваша фамилия - {family}</li> }
 				{gender && <li className="collection-item">Ваш пол - {gender}</li> }
-				{articles && <li className="collection-item">Написано постов - {articles.length}</li> }
+				{articles && <li className="collection-item">Написано постов - {this.props.adminPosts.posts.length}</li> }
 			</ul>
 		)
 	}
